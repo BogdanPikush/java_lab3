@@ -14,8 +14,9 @@ public class Cart {
         return products;
     }
 
-    public void addProduct(Product product) {
+    public boolean addProduct(Product product) {
         products.add(product);
+        return true;
     }
 
     public void removeProduct(Product product) {
