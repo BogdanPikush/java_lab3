@@ -2,9 +2,8 @@ import org.example.Cart;
 import org.example.Order;
 import org.example.Product;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -40,17 +39,17 @@ public class ECommerceTest {
 
         when(cart.addProduct(laptop)).thenReturn(true);
 
-        Order order = new Order(Arrays.asList(laptop));
+        Order order = new Order(Collections.singletonList(laptop));
 
         order.boughtOrder();
 
-        assertNotNull(order.getOrderId());
+        assertTrue(order.getOrderId() != 0);
         assertTrue(order.getProducts().contains(laptop));
     }
 
     @Test
     public void testGetOrderStatus() {
-        Order order = new Order(Arrays.asList(new Product(1, "Laptop", 1000.0)));
+        Order order = new Order(Collections.singletonList(new Product(1, "Laptop", 1000.0)));
 
         assertEquals("pending", order.getStatus());
     }
